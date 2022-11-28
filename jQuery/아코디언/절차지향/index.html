@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../lib/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>아코디언</title>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="help-wrap">
+
+      <article class="help-contents-wrap">
+        <dl class="help-contents">
+          <dt>list1<span class="icon"></span></dt>
+          <dd>list1: text</dd>
+          <dt>list2<span class="icon"></span></dt>
+          <dd>list2: text</dd>
+          <dt>list3<span class="icon"></span></dt>
+          <dd>list3: text</dd>
+          <dt>list4<span class="icon"></span></dt>
+          <dd>list4: text</dd>
+          <dt>list5<span class="icon"></span></dt>
+          <dd>list5: text</dd>
+          <dt>list6<span class="icon"></span></dt>
+          <dd>list6: text</dd>
+          <dt>list7<span class="icon"></span></dt>
+          <dd>list7: text</dd>
+          <dt>list8<span class="icon"></span></dt>
+          <dd>list8: text</dd>
+          <dt>list9<span class="icon"></span></dt>
+          <dd>list9: text</dd>
+          <dt>list10<span class="icon"></span></dt>
+          <dd>list10: text</dd>
+          <dt>list11<span class="icon"></span></dt>
+          <dd>list11: text</dd>
+        </dl>
+      </article>
+    </section>
+  </main>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+
+      let $wrap = $('.help-wrap');
+      let helpBtns = $wrap.find('.help-contents dt');
+      let helpBox = $wrap.find('.help-contents dd');
+
+      helpBox.hide();
+
+      helpBtns.on('click', function () {
+        // $(this).next().slideToggle(300);
+
+        // helpBtns.not(this).next().slideUp(300);
+        // return false;
+
+        let isActive = $(this).hasClass('is-active')
+        helpBtns.removeClass('is-active');
+        helpBox.slideUp(500);
+
+        if (isActive) {
+          $(this).removeClass('is-active');
+          $(this).next(helpBox).slideUp(500);
+          return;
+        } else {
+          $(this).addClass('is-active');
+          $(this).next(helpBox).slideDown(500);
+
+        }
+
+      })
+      // helpBtns.eq(0).trigger('click');
+
+    })
+  </script>
+</body>
+
+</html>

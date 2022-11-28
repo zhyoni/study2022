@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../lib/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>아코디언</title>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="help-wrap">
+
+      <article class="help-contents-wrap">
+        <dl class="help-contents">
+          <dt>list1<span class="icon"></span></dt>
+          <dd>list1: text</dd>
+          <dt>list2<span class="icon"></span></dt>
+          <dd>list2: text</dd>
+          <dt>list3<span class="icon"></span></dt>
+          <dd>list3: text</dd>
+          <dt>list4<span class="icon"></span></dt>
+          <dd>list4: text</dd>
+          <dt>list5<span class="icon"></span></dt>
+          <dd>list5: text</dd>
+          <dt>list6<span class="icon"></span></dt>
+          <dd>list6: text</dd>
+          <dt>list7<span class="icon"></span></dt>
+          <dd>list7: text</dd>
+          <dt>list8<span class="icon"></span></dt>
+          <dd>list8: text</dd>
+          <dt>list9<span class="icon"></span></dt>
+          <dd>list9: text</dd>
+          <dt>list10<span class="icon"></span></dt>
+          <dd>list10: text</dd>
+          <dt>list11<span class="icon"></span></dt>
+          <dd>list11: text</dd>
+        </dl>
+      </article>
+    </section>
+  </main>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+
+      let $wrap = $('.wrap');
+      let btns = $wrap.find('.help-contents dt');
+      let boxs = $wrap.find('.help-contents dd');
+      let icon = $wrap.find('.icon')
+      boxs.hide();
+      btns.on('click', function () {
+        $(this).next().slideToggle(300);
+        btns.not(this).next().slideUp(300);
+        btns.children(icon).removeClass('is-active');
+
+        // 내가 선택한 this의 자식 icon에 is-active 붙여줌
+        if (!$(this)) {
+          // this가 아닐때
+          btns.children(icon).removeClass('is-active');
+        } else {
+          // this일때
+          $(this).children(icon).addClass('is-active');
+        }
+
+      })
+       // 모두 열려있지 않을 때 icon.removeClass('is-active')해준다
+    })
+  </script>
+</body>
+
+</html>
