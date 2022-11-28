@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>fullscreen-gallery</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <section id="gallery">
+        <h1>INNOVATION</h1>
+        <article class="showBox">
+        </article>
+
+        <article class="controls">
+            <ul class="btns">
+                <li><a href="img/pic1.jpg">INNOVATION</a></li>
+                <li><a href="img/pic2.jpg">BRAND IDENTITY</a></li>
+                <li><a href="img/pic3.jpg">INVESTMENT</a></li>
+                <li><a href="img/pic4.jpg">BRAND NEW</a></li>
+            </ul>
+
+            <div>
+                <strong>1</strong> / <span>3</span>
+            </div>
+        </article>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            /*
+     선택자.attr() 선택한 DOM의 속성(Attribute)를 제어
+     선택자.attr({"변경할속성명":"속성값"}) :해당 속성명에 해당하는 값을 변경
+     선택자.attr("알아낼 속성명") : 해당 속성명의 값을 알아냄
+     선택자.text() : 선택자에 텍스트값 가져오기
+     선택자.text("바꿀 텍스트") : 선택자에 텍스트값 변경하기
+     */
+
+            let $gallery = $('#gallery');
+            let title = $gallery.find('h1');
+            let $showBox = $gallery.find('.showBox');
+            let btns = $gallery.find('.controls .btns li a');
+            let $strong = $gallery.find('.controls div strong');
+            let $span = $gallery.find('.controls div span');
+
+            // #gallery find .btns li a클릭했을때 
+            // h1에 선택한 a태그의 텍스트로 텍스트 값을 변경
+            // .showBox에 선택한 a태그의 img로 변경
+
+            let listTotal = btns.parent('li').length;
+            $span.text(listTotal);
+
+            btns.on('click', function (e) {
+                e.preventDefault();
+
+                let thisText = $(this).text();
+                let imgSrc = $(this).attr('href');
+
+                title.text(thisText);
+                $showBox.css({ backgroundImage: "url(" + imgSrc + ")" })
+                btns.css({ color: "#999" });
+                $(this).css({ color: "#fff" })
+
+                let listNum = $(this).parent('li').index() + 1;
+                $strong.text(listNum);
+            })
+
+
+        })
+    </script>
+</body>
+
+</html>

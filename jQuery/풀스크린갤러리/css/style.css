@@ -1,0 +1,31 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+* {margin:0px; padding:0px;}
+ul,ol {list-style:none;}
+a {text-decoration:none; outline:1;}
+
+#gallery {width:100%; height:100vh; }
+#gallery h1 {font-weight:normal; color:#fff; font-size:110px; position:absolute; top:15%; left:5%; z-index:3; font-family:"monoton"}
+.showBox {
+    width:100%; height:100%; background-size:cover; background-position:center; background-repeat:no-repeat; position:absolute; top:0px; left:0px; background-image:url(../img/pic1.jpg);
+}
+.controls {
+     width:40%; padding:50px; box-sizing:border-box; background:rgba(0,0,0,0.7);position:absolute; bottom:200px; right:0px;
+}
+.btns::after { content:""; display:block; clear:both;}
+.btns li {float:left; margin-right:20px;}
+.btns li a {font:bold 12px/1 "arial"; color:#999;}
+.btns li:nth-of-type(1) a {color:#fff;}
+.btns li a:hover {background:#000; color:#fff;}
+div { margin-top:20px; font-size:14px; color:#888;}
+div strong {color:#fff; font-size:40px; }
+div span {color:#888;}
+
+
+/* 배경이미지 caching*/
+.btns li:nth-of-type(1) {background:url(../img/pic1.jpg) no-repeat -9999px -9999px;}
+.btns li:nth-of-type(2) {background:url(../img/pic2.jpg) no-repeat -9999px -9999px;}
+.btns li:nth-of-type(3) {background:url(../img/pic3.jpg) no-repeat -9999px -9999px;}
+.btns li:nth-of-type(4) {background:url(../img/pic4.jpg) no-repeat -9999px -9999px;}
+
+
