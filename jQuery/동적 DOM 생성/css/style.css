@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  display: block;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  background: aquamarine;
+  text-decoration: none;
+}
+
+li:nth-of-type(2) a {
+  background: rgb(127, 168, 255);
+}
+
+li:nth-of-type(3) a {
+  background: rgb(158, 245, 99);
+}
+
+table,
+td,
+th {
+  border-collapse: collapse;
+}
+
+fieldset {
+  border: none;
+}
+
+input,
+a,
+button {
+  outline: 1;
+}

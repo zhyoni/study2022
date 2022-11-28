@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ajax DOM parsing</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <div id="wrap"></div>
+
+  <!--
+   <ul class="list">
+        <li>
+            <a href="https://www.naver.com" target="_blank">
+                <img src="img/s1.jpg" alt="네이버">
+            </a>
+        </li>       
+        <li>
+            <a href="https://www.nate.com" target="_blank">
+                <img src="img/s2.jpg" alt="네이트">
+            </a>
+        </li>       
+       <li>
+            <a href="https://www.google.com" target="_blank">
+                <img src="img/s3.jpg" alt="구글">
+            </a>
+       </li>
+   </ul>
+   -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $.ajax({
+      url: "json/item.json",
+      dataType: "json",
+      success: function (data) {
+        console.log(data.item)
+
+        $('#wrap').append('<ul class="list">');
+
+        $(data.item).each(function () {
+          $('.list').append(
+            $('<li>')
+              .append(
+                $('<a>').attr({
+                  href: this.link,
+                  target: "_blank"
+                }).text(this.title)
+              )
+          )
+        });
+
+      },
+      error: function (err) {
+        console.error(err);
+      }
+
+
+
+    })
+  </script>
+</body>
+
+</html>

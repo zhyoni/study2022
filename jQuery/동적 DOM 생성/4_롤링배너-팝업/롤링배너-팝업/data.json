@@ -1,0 +1,44 @@
+{
+    "imgSrc" : [
+        {
+            "thumb" : "img/pic1.jpg",
+            "pic" : "img/s1.jpg"
+        },
+        {
+            "thumb" : "img/pic2.jpg",
+            "pic" : "img/s2.jpg"
+        },
+        {
+            "thumb" : "img/pic3.jpg",
+            "pic" : "img/s3.jpg"
+        },
+        {
+            "thumb" : "img/pic4.jpg",
+            "pic" : "img/s4.jpg"
+        },
+        {
+            "thumb" : "img/pic5.jpg",
+            "pic" : "img/s5.jpg"
+        },
+        {
+            "thumb" : "img/pic6.jpg",
+            "pic" : "img/s6.jpg"
+        },
+        {
+            "thumb" : "img/pic7.jpg",
+            "pic" : "img/s7.jpg"
+        },
+        {
+            "thumb" : "img/pic8.jpg",
+            "pic" : "img/s8.jpg"
+        },
+        {
+            "thumb" : "img/pic9.jpg",
+            "pic" : "img/s9.jpg"
+        },
+        {
+            "thumb" : "img/pic10.jpg",
+            "pic" : "img/s10.jpg"
+        }
+    ]
+}

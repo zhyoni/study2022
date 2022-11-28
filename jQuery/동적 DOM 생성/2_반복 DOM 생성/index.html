@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>반복 DOM 생성</title>
+</head>
+
+<body>
+  <div id="wrap">
+  </div>
+  <!-- 
+  <a href="https://www.naver.com" target="_blank">
+    <img src="img/s1.jpg" alt="네이버">
+  </a>
+
+  <a href="https://www.nate.com" target="_blank">
+    <img src="img/s2.jpg" alt="네이트">
+  </a>
+
+  <a href="https://www.google.com" target="_blank">
+    <img src="img/s3.jpg" alt="구글">
+  </a> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <script>
+    $(function () {
+
+      var fruit = ["apple", "strawberry", "melon", "banana"];
+
+      fruit.forEach(item => console.log(item));
+      // for (let i = 0; i < fruit.length; i++) {
+      //   console.log(fruit[i])
+      // }
+
+      let itemData = [
+        {
+          title: "네이버",
+          link: "https://www.naver.com"
+        },
+        {
+          title: "구글",
+          link: "https://www.google.com"
+        }
+      ]
+
+      $('#wrap').append('<ul class="list">');
+      $(itemData).each(function () {
+        $('.list').append(
+          $('<li>').append(
+            $('<a>').attr({
+              href: this.link,
+              target: '_blank',
+            })
+              .text(this.title)
+          )
+        )
+      })
+
+    })
+  </script>
+
+</body>
+
+</html>

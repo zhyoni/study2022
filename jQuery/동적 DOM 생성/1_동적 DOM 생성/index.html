@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>동적 DOM 생성</title>
+</head>
+
+<body>
+  <div id="wrap">
+  </div>
+  <!-- 
+  <a href="https://www.naver.com" target="_blank">
+    <img src="img/s1.jpg" alt="네이버">
+  </a>
+
+  <a href="https://www.nate.com" target="_blank">
+    <img src="img/s2.jpg" alt="네이트">
+  </a>
+
+  <a href="https://www.google.com" target="_blank">
+    <img src="img/s3.jpg" alt="구글">
+  </a> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <script>
+    $(function () {
+
+      $('#wrap').append(
+        $("<a>")
+          .attr({
+            href: "http://www.naver.com",
+            target: "_blank"
+          })
+      );
+      $('#wrap').html(result)
+    })
+  </script>
+
+</body>
+
+</html>
