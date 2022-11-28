@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../lib/reset.css">
+  <link rel="stylesheet" href="style.css">
+  <title>메타연킄이벤트요소</title>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="btn-wrap">
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+      <button class="btn-result"> 결과 보기</button>
+    </section>
+    <section class="hidden-box">
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+    </section>
+  </main>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+
+      let $wrap = $('.wrap');
+      let btns = $wrap.find('.btn-wrap > ul > li');
+      let btnResult = $wrap.find('.btn-result');
+      let boxs = $wrap.find('.hidden-box > ul > li');
+
+      btns.on('click', function () {
+        btns.removeClass('is-active');
+        $(this).addClass('is-active');
+      })
+
+      btnResult.on('click', function () {
+        const btnIdx = $wrap.find('.btn-wrap > ul > li.is-active').index();
+        if (btnIdx == -1) {
+          return false
+        } else if (!boxs.eq(btnIdx).hasClass('is-active')) {
+          boxs.removeClass('is-active').slideUp(1000);
+          boxs.eq(btnIdx).addClass('is-active').slideDown(1000);
+        } else {
+          boxs.removeClass('is-active').slideUp(1000);
+        }
+      });
+
+    })
+  </script>
+</body>
+
+</html>
