@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>브라우저 판별</title>
+  <style>
+    body.chrome {
+      background: lightgreen;
+    }
+
+    body.ie {
+      background: lightblue;
+    }
+
+    body.edge {
+      background: pink;
+    }
+
+    body.ff {
+      background: orange;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+
+      var ver = navigator.userAgent;
+
+      /*
+    모든 브라우저는 navigator객체 안에 userAgent값으로
+    해당 브라우저의 정보값을 담고 있음
+
+    브라우저 마다 고유의 문자를 포함
+
+    크롬 = Chrome
+    IE = Trident
+    엣지 = Edg
+    파이어폭스 = Firefox        
+*/
+
+      if (ver.search(/chrome/i) != -1 && ver.search(/edg/i) == -1) {
+        console.log("크롬 브라우저 입니다.");
+        $("body").addClass("chrome");
+      }
+
+      if (ver.search(/trident/i) != -1) {
+        console.log("IE 브라우저 입니다.");
+        $("body").addClass("ie");
+      }
+
+      if (ver.search(/edg/i) != -1) {
+        console.log("엣지 브라우저 입니다.");
+        $("body").addClass("edge");
+      }
+
+      if (ver.search(/firefox/i) != -1) {
+        console.log("파이어폭스 브라우저 입니다.");
+        $("body").addClass("ff");
+      }
+
+
+    })
+  </script>
+</body>
+
+</html>
