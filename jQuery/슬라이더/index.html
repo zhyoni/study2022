@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>슬라이더</title>
+</head>
+
+<body>
+  <main class="wrap">
+    <div class="bg-slider-wrap">
+      <ul class="bg-slider">
+        <li class="bg1">1</li>
+        <li class="bg2">2</li>
+        <li class="bg3">3</li>
+        <li class="bg4">4</li>
+      </ul>
+    </div>
+
+    <div class="phone-slider-wrap">
+      <div class="phone-img">
+        <ul class="phone-slider">
+          <li class="bg1">1</li>
+          <li class="bg2">2</li>
+          <li class="bg3">3</li>
+          <li class="bg4">4</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="btn-wrap">
+      <a class="btn-prev" href="#none">prev</a>
+      <a class="btn-next" href="#none">next</a>
+    </div>
+
+    <ul class="pagination">
+      <li class="on"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </main>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+
+      let $wrap = $('.wrap');
+      let slider1 = $wrap.find('.bg-slider');
+      let slider2 = $wrap.find('.phone-slider');
+      let btnPrev = $wrap.find('.btn-wrap .btn-prev');
+      let btnNext = $wrap.find('.btn-wrap .btn-next');
+      let sliderleng = slider1.children('li').length - 1;
+      let sl1Width = slider1.find('li').width();
+      let sl2Width = slider2.find('li').width();
+      // let sliderleng2 = slider2.children('li').length;
+
+      let count = 0;
+      btnNext.on('click', function () {
+        count++
+
+        if (count > sliderleng) {
+          count = 0;
+        }
+        sliderEvent(sl1Width, sl2Width, count);
+      });
+
+      btnPrev.on('click', function () {
+        count--
+
+        if (count < 0) {
+          count = sliderleng;
+        }
+
+        sliderEvent(sl1Width, sl2Width, count)
+
+      });
+
+      // 자동 슬라이더 기능
+      let timer = setInterval(function () {
+        count++
+        if (count > sliderleng) {
+          count = 0;
+        }
+        sliderEvent(sl1Width, sl2Width, count)
+      }, 2000)
+
+      slider2.mouseover(function () {
+        clearInterval(timer);
+      })
+
+      slider2.mouseout(function () {
+        timer = setInterval(function () {
+          count++
+          if (count > sliderleng) {
+            count = 0;
+          }
+          sliderEvent(sl1Width, sl2Width, count)
+        }, 2000)
+      })
+
+      function sliderEvent(sl1Width, sl2Width, count) {
+        $('.pagination li').removeClass('on');
+        $('.pagination li').eq(count).addClass('on');
+        slider1.animate({ 'left': -sl1Width * count + "px" })
+        slider2.animate({ 'left': -sl2Width * count + "px" })
+      }
+
+
+    });
+
+  </script>
+</body>
+
+</html>

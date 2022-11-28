@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+
+.wrap {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  overflow: hidden;
+}
+
+.bg1 {
+  background: rgb(255, 0, 0);
+}
+
+.bg2 {
+  background: rgb(255, 208, 0);
+}
+
+.bg3 {
+  background: rgb(0, 255, 76);
+}
+
+.bg4 {
+  background: rgb(0, 119, 255);
+}
+
+/* ------------------
+ # bg-slider
+------------------ */
+.bg-slider-wrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bg-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400%;
+  height: 100%;
+  display: flex;
+}
+
+.bg-slider li {
+  width: 100%;
+  height: 100%;
+}
+
+/* ------------------
+# phone-slider
+------------------ */
+.phone-slider-wrap {
+  position: absolute;
+  width: 450px;
+  height: 787px;
+  background: url('./img/bgPhone.png');
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.phone-img {
+  width: 250px;
+  height: 443px;
+  position: absolute;
+  background: rgb(194, 240, 255);
+  top: 174px;
+  left: 98px;
+  overflow: hidden;
+}
+
+.phone-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400%;
+  height: 100%;
+  display: flex;
+}
+
+.phone-slider li {
+  width: 25%;
+  height: 100%;
+}
+
+.btn-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 450px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 50;
+}
+
+.btn-wrap a {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.247);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* pagination */
+.pagination {
+  position: absolute;
+  width: 20%;
+  height: 50px;
+  left: 50%;
+  bottom: 50px;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.pagination li {
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.pagination li.on {
+  background-color: #000;
+}
