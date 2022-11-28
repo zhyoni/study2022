@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../lib/reset.css">
+  <link rel="stylesheet" href="tabmenu.css">
+  <title>탭메뉴</title>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="help-wrap">
+
+      <ul class="btn-wrap">
+        <li class="is-active">자주 하는 질문</li>
+        <li>회원가입</li>
+        <li>로그인</li>
+        <li>프로필</li>
+        <li>모임</li>
+        <li>사용환경</li>
+        <li>고객문의</li>
+        <li>포인트</li>
+      </ul>
+
+      <article class="help-contents">
+        <ul class="list-wrap">
+          <li>list 1</li>
+          <li>list 2</li>
+          <li>list 3</li>
+          <li>list 4</li>
+          <li>list 5</li>
+          <li>list 6</li>
+          <li>list 7</li>
+          <li>list 8</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+
+      $('.help-wrap li').on('click', function () {
+        $('.help-wrap li').removeClass('is-active');
+        $(this).addClass('is-active');
+
+        const idx = $(this).index();
+        $('.list-wrap li').css("display", "none")
+        $('.list-wrap li').eq(idx).css("display", "block");
+      })
+    })
+  </script>
+</body>
+
+</html>
