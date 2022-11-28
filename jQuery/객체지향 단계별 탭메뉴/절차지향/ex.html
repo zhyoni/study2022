@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>절차지향 탭메뉴</title>
+</head>
+
+<body>
+  <div id="tab1">
+    <ul>
+      <li class="on"><a href="#">button1</a></li>
+      <li><a href="#">button2</a></li>
+      <li><a href="#">button3</a></li>
+    </ul>
+
+    <div class="group">
+      <div class="on">box1</div>
+      <div>box2</div>
+      <div>box3</div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      $('#tab1 > ul > li').on('click', function () {
+        
+        $('#tab1 > ul > li').removeClass('on');
+        $(this).addClass('on');
+
+        let idx = $(this).index();
+        $('.group > div').removeClass('on');
+        $('.group > div').eq(idx).addClass('on');
+
+      });
+
+    })
+
+
+  </script>
+</body>
+
+</html>

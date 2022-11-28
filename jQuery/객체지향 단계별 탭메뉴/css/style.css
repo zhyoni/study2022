@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+#tab {
+	width: 300px;
+	border: 1px solid #000;
+	margin: 100px auto;
+}
+
+#tab ul::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+#tab ul>li {
+	float: left;
+}
+
+#tab ul>li>a {
+	display: block;
+	width: 100px;
+	height: 40px;
+	background: #666;
+	font: bold 12px/40px "arial";
+	color: #bbb;
+	text-align: center;
+}
+
+#tab ul>li.on>a {
+	background: #fff;
+	color: #444;
+}
+
+#tab .group>div {
+	width: 100%;
+	height: 200px;
+	background: #fff;
+	font: bold 20px/200px "arial";
+	color: #444;
+	text-align: center;
+	display: none;
+}
+
+#tab .group>div.on {
+	display: block;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>객체지향 탭메뉴</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+
+  <div id="tab1">
+    <ul>
+      <li class="on"><a href="#">button1</a></li>
+      <li><a href="#">button2</a></li>
+      <li><a href="#">button3</a></li>
+    </ul>
+
+    <div class="group">
+      <div class="on">box1</div>
+      <div>box2</div>
+      <div>box3</div>
+    </div>
+  </div>
+
+  <div id="tab2">
+    <ul>
+      <li class="on"><a href="#">button1</a></li>
+      <li><a href="#">button2</a></li>
+      <li><a href="#">button3</a></li>
+    </ul>
+
+    <div class="group">
+      <div class="on">box1</div>
+      <div>box2</div>
+      <div>box3</div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    // $(function () {
+    //   var tab1 = new Tab("#tab1");
+    // });
+
+    function Tab(selector) {
+      this.init(selector);
+      this.bindingEvent();
+    }
+    Tab.prototype.init = function (selector) {
+      this.frame = $(selector);
+      this.btns = this.frame.find("ul>li");
+      this.boxs = this.frame.find("div>div");
+    }
+    Tab.prototype.bindingEvent = function () {
+      //생성자함수안쪽의 this값은 인스턴스를 지칭하나
+      //이벤트 발생하는 순간 this값이 인스턴스가 아닌 이벤트 발생 대상을 참조하므로
+      //this값이 엉키는것을 방지하기 위해서 
+      //이벤트문 안쪽에서만 인스턴스 this를 지역변수 self에 옮겨담아서 활용
+      var self = this;
+
+      self.btns.on("click", function (e) {
+        e.preventDefault();
+        var i = $(this).index();
+        self.activation(i);
+      });
+    }
+    Tab.prototype.activation = function (index) {
+      this.btns.removeClass("on");
+      this.btns.eq(index).addClass("on");
+
+      this.boxs.removeClass("on");
+      this.boxs.eq(index).addClass("on");
+    }
+    var tab1 = new Tab("#tab1");
+    var tab2 = new Tab("#tab2");
+  </script>
+</body>
+
+</html>

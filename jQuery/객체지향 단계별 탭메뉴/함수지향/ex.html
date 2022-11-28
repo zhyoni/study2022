@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>함수지향 탭메뉴</title>
+</head>
+
+<body>
+  <div id="tab1">
+    <ul>
+      <li class="on"><a href="#">button1</a></li>
+      <li><a href="#">button2</a></li>
+      <li><a href="#">button3</a></li>
+    </ul>
+
+    <div class="group">
+      <div class="on">box1</div>
+      <div>box2</div>
+      <div>box3</div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      let $tab, $btns, $boxs;
+      init('#tab1');
+      bindingEvent();
+
+      function init(selector) {
+        $tab = $(selector);
+        $btns = $tab.find('ul > li');
+        $boxs = $tab.find('div > div');
+      }
+
+      function bindingEvent() {
+        $btns.on('click', function (e) {
+          e.preventDefault();
+
+          $idx = $(this).index();
+          activeEvent($idx);
+        })
+      }
+
+      function activeEvent(idx) {
+        $btns.removeClass('on');
+        $btns.eq(idx).addClass('on');
+
+        $boxs.removeClass('on');
+        $boxs.eq(idx).addClass('on');
+      }
+
+    })
+
+
+  </script>
+</body>
+
+</html>

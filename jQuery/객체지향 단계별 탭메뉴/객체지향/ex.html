@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>객체지향 탭메뉴</title>
+</head>
+
+<body>
+  <div id="tab" class="tab1">
+    <ul>
+      <li class="on"><a href="#">button1</a></li>
+      <li><a href="#">button2</a></li>
+      <li><a href="#">button3</a></li>
+    </ul>
+
+    <div class="group">
+      <div class="on">box1</div>
+      <div>box2</div>
+      <div>box3</div>
+    </div>
+  </div>
+  <div id="tab" class="tab2">
+    <ul>
+      <li class="on"><a href="#">button1</a></li>
+      <li><a href="#">button2</a></li>
+      <li><a href="#">button3</a></li>
+    </ul>
+
+    <div class="group">
+      <div class="on">box1</div>
+      <div>box2</div>
+      <div>box3</div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+      function Tab(selector) {
+        this.init(selector);
+        this.bindingEvent();
+      }
+
+      Tab.prototype.init = function (selector) {
+        this.wrap = $(selector);
+        this.btns = this.wrap.find('ul > li');
+        this.boxs = this.wrap.find('div > div');
+      }
+
+      Tab.prototype.bindingEvent = function () {
+
+        let self = this;
+        self.btns.on('click', function (e) {
+          e.preventDefault();
+
+          // console.log('this', this)
+          // console.log('self', self)
+          idx = $(this).index();
+          self.activeEvent(idx);
+        });
+      }
+
+      Tab.prototype.activeEvent = function (idx) {
+        this.btns.removeClass('on');
+        this.btns.eq(idx).addClass('on');
+
+        this.boxs.removeClass('on');
+        this.boxs.eq(idx).addClass('on');
+      }
+
+      let tab1 = new Tab('.tab1');
+      let tab2 = new Tab('.tab2');
+
+    })
+
+
+  </script>
+</body>
+
+</html>
