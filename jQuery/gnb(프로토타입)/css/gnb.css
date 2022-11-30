@@ -1,0 +1,106 @@
+* {
+  box-sizing: border-box;
+}
+
+.wrap {
+  position: relative;
+  overflow: hidden;
+  width: 1024px;
+  height: 1280px;
+}
+
+.gnb-wrap {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 320px;
+  display: flex;
+  justify-content: end;
+  z-index: 10;
+}
+
+.sidemenu-header {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: end;
+  z-index: 10;
+}
+
+.btn-home,
+.btn-close {
+  display: block;
+  width: 80px;
+  height: 80px;
+  color: #fff;
+  background-color: #ffc107;
+  cursor: pointer;
+}
+
+.header-wrap {
+  position: relative;
+  width: 100%;
+  height: 366px;
+  padding: 150px 70px 60px;
+  z-index: 2;
+}
+
+.header-wrap hgroup h2 {
+  font-size: 62px;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: -3px;
+  line-height: 1.26;
+}
+
+.contents-wrap {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 1024px;
+  height: 1280px;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 10;
+}
+
+.contents-wrap.active {
+  left: 0;
+  opacity: 1;
+}
+
+.sidemenu-wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.sidemenu-contents {
+  width: 100%;
+  height: 800px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sidemenu-wrap .sidemenu-contents .btn {
+  width: 498px;
+  min-width: 246px;
+  min-height: 110px;
+  margin: 29px 0;
+  padding: 27px 50px 30px;
+  text-align: center;
+  font-size: 40px;
+  line-height: 55px;
+  font-weight: 700;
+  border-radius: 116px;
+  border: 2px solid #fff;
+  background: rgba(0, 0, 0, 0);
+  color: #fff;
+}
+
+.btn-home.active,
+.btn-close.active {
+  background-color: #ffc1077d;
+}

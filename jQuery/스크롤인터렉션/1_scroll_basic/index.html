@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>scroll basic</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <main>
+    <section id="box1"></section>
+    <section id="box2"></section>
+    <section id="box3"></section>
+    <section id="box4"></section>
+  </main>
+
+  <ul id="nav">
+    <li><a href="#box1" class="on"></a></li>
+    <li><a href="#box2"></a></li>
+    <li><a href="#box3"></a></li>
+    <li><a href="#box4"></a></li>
+  </ul>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    let boxs = $('section');
+    let btns = $('#nav li');
+    let speed = 1000;
+    let activeName = 'on';
+    let posArr = [];
+
+    // 브라우저 로딩시 섹션의 세로 위치값 배열에 저장함수 호출
+    setPos()
+
+    // 브라우저 스크롤시 스크롤값에 따른 버튼 활성화 함수 호출
+    $(window).on('scroll', function () {
+      let scroll = $(window).scrollTop();
+      // console.log(scroll)
+      activation(scroll);
+    })
+
+    // 버튼 클릭시 매칭되는 섹션의 위치값으로 자동이동함수 호출
+    btns.on('click', function (e) {
+      e.preventDefault();
+      moveScroll(this);
+    })
+
+    // 섹션의 세로 위치값 배열에 저장하는 함수
+    function setPos() {
+      boxs.each(function (index) {
+        // push() 메서드는 배열의 끝에 하나 이상의 요소를 추가하고, 배열의 새로운 길이를 반환
+        posArr.push(boxs.eq(index).offset().top);
+      })
+    }
+
+    // 인수로 스크롤 값을 받아 스크롤 위치에 따른 버튼 활성화 함수
+    function activation(scroll) {
+      boxs.each(function (index) {
+        if (scroll >= posArr[index]) {
+          btns.children('a').removeClass(activeName);
+          btns.eq(index).children('a').addClass(activeName);
+        }
+      })
+    }
+
+    // 인수로 이벤트 발생 객체를 받아 해당 섹션의 위치로 자동 이동하는 함수 호출
+    function moveScroll(el) {
+      let target = $(el).children('a').attr('href');
+      let targetPos = $(target).offset().top;
+      $('html, body').stop().animate({ scrollTop: targetPos }, speed);
+    }
+  </script>
+</body>
+
+</html>

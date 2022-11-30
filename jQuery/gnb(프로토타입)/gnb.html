@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>gnb</title>
+  <link rel="stylesheet" href="./css/gnb.css">
+  <link rel="stylesheet" href="../../lib/reset.css">
+</head>
+
+<body>
+  <main class="wrap">
+
+    <nav class="gnb-wrap">
+      <button type="button" class="btn-home">열기</button>
+    </nav>
+
+    <header class="header-wrap">
+      <hgroup>
+        <h2>
+          Title <br>
+          Text
+        </h2>
+      </hgroup>
+    </header>
+
+    <section class="contents-wrap">
+      <!-- 컨텐츠  -->
+      <nav class="sidemenu-wrap">
+        <header class="sidemenu-header">
+          <button type="button" class="btn-close">닫기</button>
+        </header>
+        <section class="sidemenu-contents">
+          <!-- <a href="#" class="btn btn-main">메인으로 가기</a>
+          <a href="#" class="btn btn-help">사용 가이드</a>
+          <a href="#" class="btn btn-kakao">카카오톡 1:1 상담</a> -->
+        </section>
+      </nav>
+    </section>
+
+  </main>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $(function () {
+
+      function Gnb(selector) {
+        this.init(selector);
+        this.sidemenuState = [
+          {
+            name: 'home',
+            text: '메인으로 가기',
+            url: 'goToMain'
+          },
+          {
+            name: 'info',
+            text: '사용 가이드',
+            url: 'goToHelp'
+          },
+          {
+            name: 'chat',
+            text: '카카오톡 1:1 상담',
+            url: 'goToKakao'
+          }
+        ];
+        this.createSidemenu();
+        this.bindingEvent();
+        this.event();
+      }
+
+      Gnb.prototype.init = function (selector) {
+        this.wrap = $(selector); // .wrap
+        this.btnHome = this.wrap.find('.btn-home');
+        this.btnClose = this.wrap.find('.btn-close');
+        this.contentsWrap = this.wrap.find('.contents-wrap');
+        this.sidemenuContents = this.wrap.find('.sidemenu-contents');
+      }
+
+      Gnb.prototype.createSidemenu = function () {
+        for (let i = 0; i < this.sidemenuState.length; i++) {
+          console.log(this.sidemenuState[i].name)
+          this.sidemenuContents.append(
+            $('<a class="btn">').text(
+              this.sidemenuState[i].text
+            ).attr({
+              href: this.sidemenuState[i].url,
+            })
+          )
+        }
+
+        // this.sidemenuContents.html('<a href="#" class="btn btn-main">메인으로 가기</a>' + '<a href="#" class="btn btn-help">사용 가이드</a>' + '<a href="#" class="btn btn-kakao">카카오톡 1:1 상담</a>');
+
+      }
+
+      Gnb.prototype.bindingEvent = function () {
+        let self = this;
+
+        self.btnHome.on('click', function () {
+          console.log('열기')
+          self.contentsWrap.addClass('active');
+        });
+        self.btnClose.on('click', function () {
+          console.log('닫기')
+          self.contentsWrap.removeClass('active');
+        });
+      }
+
+      Gnb.prototype.event = function () {
+        // 메인으로 가기
+        $('a[href=goToMain]').on('click', function (e) {
+          e.preventDefault();
+          alert('메인으로 돌아가시겠어요?')
+        })
+
+        // 사용자 가이드
+        $('a[href=goToHelp]').on('click', function (e) {
+          e.preventDefault();
+          alert('사용자 가이드 이동')
+        })
+        //카카오톡 상담하기
+        $('a[href=goToKakao]').on('click', function (e) {
+          e.preventDefault();
+          alert('카카오톡 상담하기 이동')
+        })
+      }
+      let $wrap = new Gnb('.wrap')
+    })
+  </script>
+</body>
+
+</html>
