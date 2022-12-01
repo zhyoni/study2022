@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../lib/reset.css">
+  <title>requestAnimationFrame</title>
+  <style>
+    .box {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      background: skyblue;
+      transform: translate(-50%, -50%);
+    }
+
+    .box::before {
+      position: absolute;
+      top: 0px;
+      left: -25px;
+      border-bottom: 50px solid transparent;
+      border-top: 50px solid transparent;
+      border-left: 50px solid skyblue;
+      border-right: 50px solid transparent;
+      transform: rotate(270deg);
+      transform-origin: top left;
+      content: "";
+    }
+
+    .value {
+      margin-top: 15rem;
+      font-size: 7rem;
+      font-weight: 100;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+  <div class="value">requestAnimationFrame</div>
+
+  <script>
+    const box = document.querySelector('.box');
+    const value = document.querySelector('.value');
+    let yPos = 0;
+    let rafId;
+
+    function render() {
+      value.innerHTML = yPos;
+      yPos += 5;
+      box.style.transform = `translateY(${-yPos}px)`;
+      rafId = requestAnimationFrame(render);
+
+      if (yPos > 600) {
+        cancelAnimationFrame(rafId)
+      }
+    }
+    render();
+
+    window.addEventListener('click', () => {
+      cancelAnimationFrame(rafId)
+    });
+
+
+    // requestAnimationFrame(() => {
+    //   console.log(0)
+    // })
+    // console.log(1)
+  </script>
+</body>
+
+</html>
