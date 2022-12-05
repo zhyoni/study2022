@@ -1,19 +1,89 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
 /*Default set*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video, button {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+button {
   margin: 0;
   padding: 0;
   border: 0;
@@ -23,13 +93,22 @@ time, mark, audio, video, button {
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 
 body {
-  font-family: 'Noto Sans KR', 'Noto Sans', 'Noto Sans CJK', 'Droid Sans', 'Roboto', 'Helvetica Neue',sans-serif, 맑은고딕;
+  font-family: 'Noto Sans KR', 'Noto Sans', 'Noto Sans CJK', 'Droid Sans', 'Roboto', 'Helvetica Neue', sans-serif, 맑은고딕;
   letter-spacing: -0.3px;
   overflow-x: hidden;
   word-break: keep-all;
@@ -37,21 +116,26 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: '';
   content: none;
 }
 
-em, i {
+em,
+i {
   font-style: normal;
 }
 
@@ -60,7 +144,9 @@ table {
   border-spacing: 0;
 }
 
-a, a:hover, a:active {
+a,
+a:hover,
+a:active {
   text-decoration: none;
 }
 
@@ -73,8 +159,11 @@ hr {
   display: none;
 }
 
-a, button, input, select {
-  font-family: 'Noto Sans KR', 'Noto Sans', 'Noto Sans CJK', 'Droid Sans', 'Roboto', 'Helvetica Neue',sans-serif, 맑은고딕;
+a,
+button,
+input,
+select {
+  font-family: 'Noto Sans KR', 'Noto Sans', 'Noto Sans CJK', 'Droid Sans', 'Roboto', 'Helvetica Neue', sans-serif, 맑은고딕;
   letter-spacing: -0.3px;
 }
 
@@ -98,7 +187,7 @@ img {
 
 #wrap .btn-wrap {
   width: 100%;
-  height: 140px;
+  height: 180px;
 }
 
 #wrap .btn-wrap .btn-list {
@@ -106,14 +195,24 @@ img {
   top: 50px;
   left: 50%;
   -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   width: 680px;
-  height: 60px;
+  height: 70px;
   border: 2px solid #000;
   border-radius: 10px;
   background-color: #fff;
   cursor: pointer;
   z-index: 2;
+}
+
+#wrap .btn-wrap .btn-list a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #wrap .btn-wrap .btn-list .btn-on {
@@ -123,8 +222,9 @@ img {
   left: -5px;
   width: 33.33%;
   height: 100%;
-  line-height: 60px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 24px;
   color: #fff;
   font-weight: 800;
@@ -136,7 +236,7 @@ img {
   transition: 0.5s;
 }
 
-#wrap .btn-wrap .btn-list > ul {
+#wrap .btn-wrap .btn-list>ul {
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -144,7 +244,7 @@ img {
   display: flex;
 }
 
-#wrap .btn-wrap .btn-list > ul > li {
+#wrap .btn-wrap .btn-list>ul>li {
   width: 33.33%;
   height: 100%;
   line-height: 60px;
@@ -156,7 +256,7 @@ img {
 #wrap .container .content-wrap {
   width: 100%;
   height: 100%;
-  padding: 0 0 50px;
+  padding: 0 0 180px;
 }
 
 #wrap .container .content-wrap .contents {
@@ -189,7 +289,7 @@ img {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 #wrap .container .content-wrap .contents .content-body li {
@@ -225,7 +325,7 @@ img {
   right: 120px;
   font-weight: 800;
   -webkit-transform: translateY(-35%) rotate(45deg);
-          transform: translateY(-35%) rotate(45deg);
+  transform: translateY(-35%) rotate(45deg);
   border-top: 3px solid #6200ff;
   border-right: 3px solid #6200ff;
 }
@@ -249,7 +349,7 @@ img {
   height: 700px;
   background: #fff;
   -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   overflow: hidden;
 }
 
@@ -269,7 +369,8 @@ img {
   z-index: 100;
 }
 
-#wrap #popup-vote .popup-alert header button.btn-close::before, #wrap #popup-vote .popup-alert header button.btn-close::after {
+#wrap #popup-vote .popup-alert header button.btn-close::before,
+#wrap #popup-vote .popup-alert header button.btn-close::after {
   position: absolute;
   top: 0;
   width: 1px;
@@ -281,12 +382,12 @@ img {
 
 #wrap #popup-vote .popup-alert header button.btn-close::before {
   -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 #wrap #popup-vote .popup-alert header button.btn-close::after {
   -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 #wrap #popup-vote .popup-alert .popup-body {

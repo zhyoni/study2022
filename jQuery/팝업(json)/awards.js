@@ -30,14 +30,7 @@ $.ajax({
       $('#popup-vote').hide()
     });
 
-    $('.btn-list ul li').on('click', function () {
-      let btnOffset = $(this).offset().left;
-      let thisText = $(this).text();
-      $('.btn-on').offset({ left: btnOffset - 5 });
-      $('.btn-on').text(thisText);
-
-      offsetEvent($(this));
-    })
+    scrollEvent()
   },
   error: function () {
     console.log('데이터X')
@@ -110,14 +103,17 @@ function createData(json) {
 
       // 컨텐츠 별 class명 달기
       if (dateType == json[0].type) {
+        htmlSection.id += 'webdrama-title'
         htmlHeaderTitle.className += ' webdrama-title';
         htmlSpan.className += ' webdrama-title-num'
         htmlUl.className += ' webdrama-list';
       } else if (dateType == json[6].type) {
-        htmlHeaderTitle.className += ' support-title';
+        htmlSection.id += 'support-title'
+        htmlHeaderTitle.className += 'support-title';
         htmlSpan.className += ' support-title-num'
         htmlUl.className += ' support-list';
       } else if (dateType == json[16].type) {
+        htmlSection.id += 'instatune-title'
         htmlHeaderTitle.className += ' instatune-title';
         htmlSpan.className += ' instatune-title-num'
         htmlUl.className += ' instatune-list';
@@ -242,8 +238,34 @@ function datePopup(json, target) {
 
 } //datePopup
 
-function offsetEvent(target) {
+function scrollEvent() {
+  let boxs = $('.content-wrap');
+  let btns = $('btn-list ul li');
+  let speed = 1000;
+  let posArr = [];
 
-  let popalertid = document.querySelector('.popup-alert');
-  console.log(popalertid)
+  setPos();
+
+  $('.btn-list ul li').on('click', function (e) {
+    e.preventDefault();
+    let btnOffset = $(this).offset().left;
+    let thisText = $(this).text();
+    $('.btn-on').offset({ left: btnOffset - 5 });
+    $('.btn-on').text(thisText);
+    moveScroll($(this))
+  });
+
+  function setPos() {
+    boxs.each(function (index) {
+      posArr.push(boxs.eq(index).offset().top);
+    })
+  };
+
+  function moveScroll(el) {
+    let target = $(el).children('a').attr('href');
+    let targetPos = $(target).offset().top;
+    $('html, body').stop().animate({ scrollTop: targetPos - 180 }, speed);
+  }
+
+
 }
