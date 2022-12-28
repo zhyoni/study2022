@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>쿵쿵따 게임</title>
+</head>
+
+<body>
+  <div><span id="order">1</span>번째 참가자</div>
+  <div>제시어: <span id="word"></span></div>
+  <input type="text">
+  <button>입력</button>
+  <p class="error"></p>
+
+  <script>
+    /*
+    const onClickButton = () => {
+      
+      if (!word) { // 제시어가 비어 있다.
+        
+        if(newWord.length == 3){
+          word = newWord; // 제시어 입력
+          $word.textContent = word;
+        
+        }else{
+          $error.textContent = '제시어가 잘못되었습니다.'
+          // $input.value = '';
+          // $input.focus();
+        }
+
+        $input.value = '';
+        $input.focus();
+        $error.textContent = '';
+      }else{ // 제시어가 비어있지 않다.
+        
+        if(word[word.length -1] == newWord[0] && newWord.length == 3){
+          word = newWord;
+          $word.textContent = word;        
+          
+          const order = parseInt($order.textContent);
+          if(order == number){
+            $order.textContent = 1;
+          }else{
+            $order.textContent = order + 1;
+          }
+
+        }else{
+          $error.textContent = '제시어가 잘못되었습니다.'
+
+        }
+        $error.textContent = '';
+        $input.value = '';
+          $input.focus();
+      }
+
+    };
+    */
+
+    const number = parseInt(prompt('몇 명이 참가하나요?'));
+    if (number) {
+
+      const $input = document.querySelector('input');
+      const $button = document.querySelector('button');
+      const $order = document.querySelector('#order');
+      const $word = document.querySelector('#word');
+      const $error = document.querySelector('.error');
+      let word; // 제시어를 저장할 변수
+      let newWord; // 새로운 제시어를 저장할 변수
+
+      const onClickButton = () => {
+        if (!word || word[word.length - 1] === newWord[0] && newWord.length === 3) { // 제시어가 비어 있거나 입력한 단어가 올바르고 세 글자인가?
+
+          if (newWord.length === 3) {
+            word = newWord; // 입력한 단어가 제시어가 된다.
+            $word.textContent = word; // 화면에 제시어 표시
+            const order = parseInt($order.textContent); // 현재 순서
+            if (order + 1 > number) {
+              $order.textContent = 1;
+            } else {
+              $order.textContent = order + 1;
+            }
+
+            $error.textContent = '';
+          } else { // 제시어가 비어있지 않다. 
+            $error.textContent = '제시어는 3글자로 입력해주세요!';
+          }
+
+        } else {
+          $error.textContent = '제시어를 다시 입력해주세요!';
+        }
+        $input.value = '';
+        $input.focus();
+
+      };
+
+      const onInput = (event) => {
+        newWord = event.target.value;
+
+      };
+
+      $button.addEventListener('click', onClickButton);
+      $input.addEventListener('input', onInput);
+
+    }
+
+
+
+
+    // 제시어가 없다면 if(!word)
+
+    //  제시어를 입력한다.wrod=newWord
+    //if(제시어가 3글자인지 확인한다.word[word.length] == 2){
+    //    $word.textContent = word;
+    // } else 제시어가 잘못되었다고 말한다.
+    // 제시어 재입력
+
+    // 제시어가 있다면 else
+    //  if(제시어의 마지막 글자와 새로운 제시어의 첫번째 글자가 동일한지 확인 && 제시어가 3글자인지 확인){
+    // word = newWord;
+    // $word.textContent = word;
+    // }
+    //else 새로운 제시어가 잘못되었다고 말한다.
+
+    // 현재 순서를 확인
+    // const order = parseInt($order.textContent)
+    // 현재 순서가 number와 같다면 $order.textContent = 1
+    // 그렇지 않다면 $order.textContent = order +1
+  </script>
+</body>
+
+</html>

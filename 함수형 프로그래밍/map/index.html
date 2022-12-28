@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>map</title>
+</head>
+
+<body>
+  <script>
+    const products = [
+      { name: '반팔티', price: 15000 },
+      { name: '긴팔티', price: 20000 },
+      { name: '핸드폰케이스', price: 15000 },
+      { name: '후드티', price: 30000 },
+      { name: '바지', price: 25000 },
+    ]
+
+    const map = (f, iter) => {
+      let res = [];
+      for (const a of iter) {
+        res.push(f(a));
+      }
+      return res;
+    };
+
+    // # map
+    // let names = [];
+    // for (const p of products) {
+    //   names.push(p.name);
+    // }
+    // console.log(names);
+
+    console.log(map(p => p.name, products));
+
+    // let prices = [];
+    // for (const p of products) {
+    //   prices.push(p.price);
+    // }
+    // console.log(prices);
+    console.log(map(p => p.price, products));
+
+
+
+
+    const video = [
+      { name: '원', price: 5000 },
+      { name: '투', price: 6000 },
+      { name: '쓰리', price: 7000 },
+      { name: '포', price: 8000 },
+      { name: '파이브', price: 9000 },
+    ]
+
+    // const map = (f, iter) => {
+    //   let res = [];
+    //   for (const a of iter) {
+    //     res.push(f(a));
+    //   }
+    //   return res;
+    // }
+    console.log(map(v => v.name, video));
+    console.log(map(v => v.price, video));
+
+    console.clear();
+
+    // 이터러블 프로토콜을 따른 map의 다형성 #1
+    console.log([1, 2, 3].map(a => a + 1));
+
+    // console.log(document.querySelectorAll('*'));
+    console.log(map(el => el.nodeName, document.querySelectorAll('*')));
+
+    // const it = document.querySelectorAll('*')[Symbol.iterator]();
+    // console.log(it.next());
+    // console.log(it.next());
+    // console.log(it.next());
+    // console.log(it.next());
+    // console.log(it.next());
+
+    function* gen() {
+      yield 2;
+      if (false) yield 3;
+      yield 4;
+    }
+    console.log(map(a => a * a, gen()));
+
+    // 이터러블 프로토콜을 따른 map의 다형성 #2
+    let m = new Map();
+    m.set('a', 10);
+    m.set('b', 20);
+    // const it = m[Symbol.iterator]();
+    // console.log(it.next());
+    // console.log(it.next());
+    // console.log(it.next());
+    console.log(new Map(map(([k, a]) => [k, a * 2], m)));
+  </script>
+</body>
+
+</html>

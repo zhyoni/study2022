@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG - path로 그리기</title>
+  <style>
+    .shapes {
+      width: 600px;
+      height: 400px;
+      background: #ddd;
+    }
+
+    path {
+      stroke: tomato;
+      stroke-width: 20;
+      /* stroke-linecap: butt; */
+      stroke-linecap: round;
+      /* stroke-linecap: square; */
+      /* stroke-linejoin: round; */
+      stroke-linejoin: bevel;
+      fill: transparent;
+    }
+  </style>
+</head>
+
+<body>
+  <svg class="shapes" xmlns="http://www.w3.org/2000/svg">
+    <!-- 직선 곡선 모두 가능-->
+    <!-- <path d="M 300 200 L 500 100 H 50 V 300 Z"></path> -->
+    <!-- <path d="M 100 150 C 100 150, 300 50, 500 250"></path> -->
+    <path d="M 50 200 L 300 100 L 400 200"></path>
+  </svg>
+</body>
+
+</html>

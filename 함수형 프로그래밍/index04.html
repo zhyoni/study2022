@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>map+filter+reduce 중첩 사용과 함수형 사고</title>
+</head>
+
+<body>
+  <script>
+    const log = console.log;
+    // ## curry
+    const curry = f => (a, ..._) => _.length ? f(a, ..._) : (..._) => f(a, ..._);
+    // 함수를 받아서 함수를 리턴 리턴된 함수가 실행되었을때 인자가 2개 이상이라면 받아둔 함수를 즉시 실행하고 인자가 2개 이하라면 함수를 다시 리턴후에 이후에 받은 인자들을 합쳐서 실행하는 함수
+
+    // maplog(map(p => p.price,procucts))
+    const map = curry((f, iter) => {
+      let res = [];
+      for (const a of iter) {
+        res.push(f(a));
+      }
+      return res;
+    });
+
+    // filter
+    const filter = curry((f, iter) => {
+      let res = [];
+      for (const a of iter) {
+        if (f(a)) res.push(a);
+      }
+      return res;
+    });
+
+    // reduce
+    const reduce = curry((f, acc, iter) => {
+      if (!iter) {
+        iter = acc[Symbol.iterator]();
+        acc = iter.next().value;
+      }
+
+      for (const a of iter) {
+        acc = f(acc, a);
+      }
+      return acc;
+    });
+
+    const products = [
+      { name: '반팔티', price: 15000 },
+      { name: '긴팔티', price: 20000 },
+      { name: '핸드폰케이스', price: 15000 },
+      { name: '후드티', price: 30000 },
+      { name: '바지', price: 25000 },
+    ]
+
+    const add = (a, b) => a + b;
+    log(
+      reduce(
+        add, // 해당 하는 모든 값을 add로 축약 출력
+        map(p => p.price, // 해당하는 값(price)을 map을 통해 추출한 다음
+          filter(p => p.price < 20000, products))));// products를 20000원 미만으로 filter를 하고
+
+    log(reduce(add, filter(n => n >= 20000, map(p => p.price, products))));
+
+    console.clear();
+
+    // # 코드를 값으로 다루어 표현력 높이기
+    // ## go(함수와 인자를 전달해서 즉시 어떤값을 평가), pipe(함수들이 나열되어있는 합성된 함수를 만드는 함수)
+    const go = (...args) => reduce((a, f) => f(a), args);
+    const pipe = (f, ...fs) => (...as) => go(f(...as), ...fs);
+
+    go(
+      // add(0, 1),
+      0,
+      a => a + 1,
+      a => a + 10,
+      a => a + 100,
+      log);
+    /// 111
+
+    const f = pipe(
+      (a, b) => a + b,
+      // a => a + 1,
+      a => a + 10,
+      a => a + 100
+    );
+
+    log(f(0, 1));
+
+    const total_price = pipe(
+      map(p => p.price),
+      reduce(add)
+    );
+
+    const base_total_price = predi => pipe(
+      filter(predi),
+      total_price
+    );
+
+
+    go(
+      products,
+      products => filter(p => p.price < 20000, products),
+      products => map(p => p.price, products),
+      prices => reduce(add, prices),
+      log
+    );
+
+
+    go(
+      products,
+      filter(p => p.price < 20000,),
+      map(p => p.price),
+      reduce(add),
+      log
+    );
+
+    go(
+      products,
+      base_total_price(p => p.price < 20000,),
+      log
+    );
+
+
+    const mult = curry((a, b) => a * b);
+    log(mult(3)(2));
+
+    const mult3 = mult(3);
+    log(mult3(10));
+    log(mult3(5));
+    log(mult3(3));
+
+  </script>
+</body>
+
+</html>

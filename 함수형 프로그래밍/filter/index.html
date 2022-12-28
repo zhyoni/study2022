@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>filter</title>
+</head>
+
+<body>
+  <script>
+    const products = [
+      { name: '반팔티', price: 15000 },
+      { name: '긴팔티', price: 20000 },
+      { name: '핸드폰케이스', price: 15000 },
+      { name: '후드티', price: 30000 },
+      { name: '바지', price: 25000 },
+    ]
+
+    const filter = (f, iter) => {
+      let res = [];
+      for (const a of products) {
+        if (f(a)) res.push(a);
+      }
+
+      return res;
+    }
+    // let under20000 = [];
+    // for (const p of products) {
+    //   if (p.price < 20000) under20000.push(p);
+    // }
+    // console.log(...under20000);
+
+    console.log(...filter(p => p.price < 20000, products));
+
+    // let over20000 = [];
+    // for (const p of products) {
+    //   if (p.price >= 20000) over20000.push(p);
+    // }
+    // console.log(...over20000);
+    console.log(...filter(p => p.price >= 20000, products));
+
+    // console.log(filter(n => n % 2, function* () {
+    //   yield 1;
+    //   yield 2;
+    //   yield 3;
+    //   yield 4;
+    //   yield 5;
+    // }()));
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG 도형 그리기,직선 그리기</title>
+  <style>
+    .shapes {
+      width: 600px;
+      height: 400px;
+      background: #ddd;
+    }
+
+    rect {
+      fill: orange;
+      stroke: dodgerblue;
+      /* 스트로크 두께 */
+      stroke-width: 10;
+    }
+
+    /* 태그 속성에 직접 style을 넣는 것 보다 css가 우선순위 */
+    /* ellipse {
+      fill: red
+    } */
+  </style>
+</head>
+
+<body>
+  <svg class="shapes">
+    <!-- <rect x="10" y="20" width="200" height="100" /> -->
+    <!-- 사각형 -->
+    <rect x="10" y="20" width="200" height="100"></rect>
+    <!-- 둥근 사각형 x y rx,ry(꼭지점 반지름)-->
+    <rect x="50" y="170" rx="10" ry="10" width="100" height="100"></rect>
+    <!-- 원 cx cy r(반지름) -->
+    <circle cx="350" cy="250" r="30"></circle>
+    <!-- 타원 cx cy rx(가로방향 반지름) ry(세로방향 반지름)-->
+    <ellipse cx="400" cy="150" rx="100" ry="50" fill="yellowgreen" stroke="green" stroke-width="20"></ellipse>
+    <!-- 직선 x1(시작점) x2(끝점) y1(시작점) y2(끝점)-->
+    <line x1="10" x2="400" y1="30" y2="300" stroke="blue" stroke-width="10"></line>
+
+    <!--polyline은 선으로만 이어줌 points="x y," 직선만 가능-->
+    <!-- <polyline points="0 0,200 100, 150 300" stroke="red" stroke-width="10"></polyline> -->
+    <!-- polygon은 도형으로 만들어줌 직선만 가능-->
+    <polygon points="0 0,200 100, 150 300" stroke="red" stroke-width="10"></polygon>
+  </svg>
+</body>
+
+</html>
